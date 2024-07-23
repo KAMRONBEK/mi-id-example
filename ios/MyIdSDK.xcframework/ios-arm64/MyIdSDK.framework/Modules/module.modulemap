@@ -1,0 +1,11 @@
+framework module MyIdSDK {
+  umbrella header "MyIdSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module MyIdSDK.Swift {
+  header "MyIdSDK-Swift.h"
+  requires objc
+}

@@ -1,0 +1,132 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MyIdSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import CoreGraphics
+import CoreVideo
+import Foundation
+@_exported import MyIdSDK
+import Swift
+import UIKit
+import Vision
+import _Concurrency
+import _StringProcessing
+@objc public protocol MyIdSdkDelegate {
+  @objc func myidOnSuccess(result: MyIdSDK.MyIdResult)
+  @objc func myidOnError(exception: MyIdSDK.MyIdException)
+  @objc func myidOnUserExited()
+}
+@objc public class MyIdOrganizationDetails : ObjectiveC.NSObject {
+  @objc public init(phone: Swift.String? = nil, logo: UIKit.UIImage? = nil)
+  @objc deinit
+}
+@objc public enum MyIdShapeMode : Swift.Int {
+  case OVAL = 0
+  case CIRCLE
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MyIdResidency : Swift.Int {
+  case USER_DEFINED = 0
+  case RESIDENT
+  case NON_RESIDENT
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class MyIdSdk : ObjectiveC.NSObject {
+  @objc public class func start(withConfigureOptions configureOptions: @escaping (_ options: MyIdSDK.MyIdOptions?) -> Swift.Void, withDelegate delegate: any MyIdSDK.MyIdSdkDelegate)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum MyIdLocale : Swift.Int {
+  case RU = 0
+  case EN
+  case UZ
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class MyIdResult : ObjectiveC.NSObject {
+  @objc public var code: Swift.String?
+  @objc public var comparisonValue: Swift.String?
+  @objc public var image: UIKit.UIImage?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class MyIdException : ObjectiveC.NSObject {
+  @objc public var code: Swift.String?
+  @objc public var message: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class MyIdOptions : ObjectiveC.NSObject {
+  @objc public var clientId: Swift.String?
+  @objc public var passportData: Swift.String?
+  @objc public var dateOfBirth: Swift.String?
+  @objc public var externalId: Swift.String?
+  @objc public var withPhoto: Swift.Bool
+  @objc public var entryType: MyIdSDK.MyIdEntryType
+  @objc public var buildMode: MyIdSDK.MyIdBuildMode
+  @objc public var locale: MyIdSDK.MyIdLocale
+  @objc public var threshold: Swift.Float
+  @objc public var organizationDetails: MyIdSDK.MyIdOrganizationDetails?
+  @objc public var viewState: MyIdSDK.MyIdViewState
+  @objc public var shapeMode: MyIdSDK.MyIdShapeMode
+  @objc public var residency: MyIdSDK.MyIdResidency
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum MyIdViewState : Swift.Int {
+  case HALF = 0
+  case FULL
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MyIdEntryType : Swift.Int {
+  case AUTH = 0
+  case FACE
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MyIdBuildMode : Swift.Int {
+  case DEBUG = 0
+  case PRODUCTION
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension MyIdSDK.MyIdShapeMode : Swift.Equatable {}
+extension MyIdSDK.MyIdShapeMode : Swift.Hashable {}
+extension MyIdSDK.MyIdShapeMode : Swift.RawRepresentable {}
+extension MyIdSDK.MyIdResidency : Swift.Equatable {}
+extension MyIdSDK.MyIdResidency : Swift.Hashable {}
+extension MyIdSDK.MyIdResidency : Swift.RawRepresentable {}
+extension MyIdSDK.MyIdLocale : Swift.Equatable {}
+extension MyIdSDK.MyIdLocale : Swift.Hashable {}
+extension MyIdSDK.MyIdLocale : Swift.RawRepresentable {}
+extension MyIdSDK.MyIdViewState : Swift.Equatable {}
+extension MyIdSDK.MyIdViewState : Swift.Hashable {}
+extension MyIdSDK.MyIdViewState : Swift.RawRepresentable {}
+extension MyIdSDK.MyIdEntryType : Swift.Equatable {}
+extension MyIdSDK.MyIdEntryType : Swift.Hashable {}
+extension MyIdSDK.MyIdEntryType : Swift.RawRepresentable {}
+extension MyIdSDK.MyIdBuildMode : Swift.Equatable {}
+extension MyIdSDK.MyIdBuildMode : Swift.Hashable {}
+extension MyIdSDK.MyIdBuildMode : Swift.RawRepresentable {}
